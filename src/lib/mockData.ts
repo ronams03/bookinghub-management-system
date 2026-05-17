@@ -1,0 +1,365 @@
+export type BookingStatus = 'confirmed' | 'pending' | 'cancelled' | 'checked-in' | 'checked-out' | 'no-show';
+export type PaymentStatus = 'paid' | 'partial' | 'unpaid' | 'refunded';
+export type RoomType = 'Standard' | 'Deluxe' | 'Suite' | 'Executive' | 'Penthouse';
+export type BookingSource = 'Direct' | 'Booking.com' | 'Expedia' | 'Corporate' | 'Walk-in' | 'Referral';
+
+export interface Booking {
+  id: string;
+  guestName: string;
+  guestEmail: string;
+  guestPhone: string;
+  roomType: RoomType;
+  roomNumber: string;
+  checkIn: string;
+  checkOut: string;
+  nights: number;
+  adults: number;
+  children: number;
+  totalAmount: number;
+  status: BookingStatus;
+  paymentStatus: PaymentStatus;
+  source: BookingSource;
+  specialRequests: string;
+  createdAt: string;
+}
+
+export interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  totalBookings: number;
+  totalSpend: number;
+  lastStay: string;
+  nationality: string;
+  loyaltyTier: 'Bronze' | 'Silver' | 'Gold' | 'Platinum';
+}
+
+export const BOOKINGS: Booking[] = [
+  {
+    id: 'BKG-2026-0451',
+    guestName: 'Marcus Holloway',
+    guestEmail: 'marcus.holloway@email.com',
+    guestPhone: '+1 (415) 882-3301',
+    roomType: 'Suite',
+    roomNumber: '501',
+    checkIn: '2026-05-17',
+    checkOut: '2026-05-20',
+    nights: 3,
+    adults: 2,
+    children: 0,
+    totalAmount: 1290,
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    source: 'Direct',
+    specialRequests: 'Late check-out requested, champagne on arrival',
+    createdAt: '2026-05-10T09:14:00Z',
+  },
+  {
+    id: 'BKG-2026-0452',
+    guestName: 'Priya Nair',
+    guestEmail: 'priya.nair@techcorp.in',
+    guestPhone: '+91 98201 44312',
+    roomType: 'Executive',
+    roomNumber: '412',
+    checkIn: '2026-05-17',
+    checkOut: '2026-05-19',
+    nights: 2,
+    adults: 1,
+    children: 0,
+    totalAmount: 680,
+    status: 'checked-in',
+    paymentStatus: 'paid',
+    source: 'Corporate',
+    specialRequests: 'High floor, extra pillows',
+    createdAt: '2026-05-08T14:22:00Z',
+  },
+  {
+    id: 'BKG-2026-0453',
+    guestName: 'James & Sarah Whitmore',
+    guestEmail: 'jwhitmore@gmail.com',
+    guestPhone: '+1 (312) 554-9901',
+    roomType: 'Penthouse',
+    roomNumber: 'PH-01',
+    checkIn: '2026-05-18',
+    checkOut: '2026-05-23',
+    nights: 5,
+    adults: 2,
+    children: 2,
+    totalAmount: 4750,
+    status: 'confirmed',
+    paymentStatus: 'partial',
+    source: 'Direct',
+    specialRequests: 'Anniversary celebration, rose petals, baby cot needed',
+    createdAt: '2026-05-09T11:05:00Z',
+  },
+  {
+    id: 'BKG-2026-0454',
+    guestName: 'Tomás Reyes',
+    guestEmail: 'tomas.reyes@outlook.com',
+    guestPhone: '+34 611 224 890',
+    roomType: 'Deluxe',
+    roomNumber: '308',
+    checkIn: '2026-05-16',
+    checkOut: '2026-05-17',
+    nights: 1,
+    adults: 1,
+    children: 0,
+    totalAmount: 320,
+    status: 'checked-out',
+    paymentStatus: 'paid',
+    source: 'Booking.com',
+    specialRequests: '',
+    createdAt: '2026-05-14T08:30:00Z',
+  },
+  {
+    id: 'BKG-2026-0455',
+    guestName: 'Aisha Kamara',
+    guestEmail: 'aisha.k@protonmail.com',
+    guestPhone: '+44 7700 190 244',
+    roomType: 'Standard',
+    roomNumber: '204',
+    checkIn: '2026-05-19',
+    checkOut: '2026-05-22',
+    nights: 3,
+    adults: 2,
+    children: 1,
+    totalAmount: 540,
+    status: 'pending',
+    paymentStatus: 'unpaid',
+    source: 'Expedia',
+    specialRequests: 'Crib for infant',
+    createdAt: '2026-05-15T16:47:00Z',
+  },
+  {
+    id: 'BKG-2026-0456',
+    guestName: 'Derek Okonkwo',
+    guestEmail: 'derek.okonkwo@law.ng',
+    guestPhone: '+234 803 512 6677',
+    roomType: 'Suite',
+    roomNumber: '502',
+    checkIn: '2026-05-20',
+    checkOut: '2026-05-24',
+    nights: 4,
+    adults: 2,
+    children: 0,
+    totalAmount: 1720,
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    source: 'Direct',
+    specialRequests: 'Airport transfer on arrival',
+    createdAt: '2026-05-11T13:00:00Z',
+  },
+  {
+    id: 'BKG-2026-0457',
+    guestName: 'Yuki Tanaka',
+    guestEmail: 'yuki.tanaka@mail.jp',
+    guestPhone: '+81 90-3344-5566',
+    roomType: 'Deluxe',
+    roomNumber: '311',
+    checkIn: '2026-05-17',
+    checkOut: '2026-05-18',
+    nights: 1,
+    adults: 2,
+    children: 0,
+    totalAmount: 340,
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    source: 'Expedia',
+    specialRequests: 'Quiet room preferred',
+    createdAt: '2026-05-12T10:15:00Z',
+  },
+  {
+    id: 'BKG-2026-0458',
+    guestName: 'Fatima Al-Rashid',
+    guestEmail: 'f.alrashid@emirates.ae',
+    guestPhone: '+971 50 344 2210',
+    roomType: 'Executive',
+    roomNumber: '415',
+    checkIn: '2026-05-21',
+    checkOut: '2026-05-25',
+    nights: 4,
+    adults: 1,
+    children: 0,
+    totalAmount: 1360,
+    status: 'pending',
+    paymentStatus: 'unpaid',
+    source: 'Corporate',
+    specialRequests: 'Halal meal options, prayer mat',
+    createdAt: '2026-05-16T07:55:00Z',
+  },
+  {
+    id: 'BKG-2026-0459',
+    guestName: 'Charlotte Beaumont',
+    guestEmail: 'c.beaumont@gmail.com',
+    guestPhone: '+33 6 12 34 56 78',
+    roomType: 'Standard',
+    roomNumber: '207',
+    checkIn: '2026-05-14',
+    checkOut: '2026-05-16',
+    nights: 2,
+    adults: 2,
+    children: 0,
+    totalAmount: 360,
+    status: 'cancelled',
+    paymentStatus: 'refunded',
+    source: 'Booking.com',
+    specialRequests: '',
+    createdAt: '2026-05-05T09:40:00Z',
+  },
+  {
+    id: 'BKG-2026-0460',
+    guestName: 'Ravi Krishnamurthy',
+    guestEmail: 'ravi.k@infosys.com',
+    guestPhone: '+91 99001 23456',
+    roomType: 'Executive',
+    roomNumber: '418',
+    checkIn: '2026-05-22',
+    checkOut: '2026-05-24',
+    nights: 2,
+    adults: 1,
+    children: 0,
+    totalAmount: 680,
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    source: 'Corporate',
+    specialRequests: 'Early check-in if possible',
+    createdAt: '2026-05-13T15:30:00Z',
+  },
+  {
+    id: 'BKG-2026-0461',
+    guestName: 'Sofia Mendez',
+    guestEmail: 'sofia.mendez@hotmail.com',
+    guestPhone: '+52 55 1234 5678',
+    roomType: 'Deluxe',
+    roomNumber: '315',
+    checkIn: '2026-05-19',
+    checkOut: '2026-05-21',
+    nights: 2,
+    adults: 2,
+    children: 1,
+    totalAmount: 640,
+    status: 'confirmed',
+    paymentStatus: 'partial',
+    source: 'Referral',
+    specialRequests: 'Connecting rooms if available',
+    createdAt: '2026-05-14T12:00:00Z',
+  },
+  {
+    id: 'BKG-2026-0462',
+    guestName: 'Oliver Strauss',
+    guestEmail: 'oliver.strauss@web.de',
+    guestPhone: '+49 151 2345 6789',
+    roomType: 'Standard',
+    roomNumber: '201',
+    checkIn: '2026-05-23',
+    checkOut: '2026-05-26',
+    nights: 3,
+    adults: 1,
+    children: 0,
+    totalAmount: 450,
+    status: 'pending',
+    paymentStatus: 'unpaid',
+    source: 'Walk-in',
+    specialRequests: '',
+    createdAt: '2026-05-17T01:10:00Z',
+  },
+];
+
+export const CUSTOMERS: Customer[] = [
+  { id: 'cust-001', name: 'Marcus Holloway', email: 'marcus.holloway@email.com', phone: '+1 (415) 882-3301', totalBookings: 8, totalSpend: 9240, lastStay: '2026-05-20', nationality: 'US', loyaltyTier: 'Gold' },
+  { id: 'cust-002', name: 'James Whitmore', email: 'jwhitmore@gmail.com', phone: '+1 (312) 554-9901', totalBookings: 5, totalSpend: 14200, lastStay: '2026-05-23', nationality: 'US', loyaltyTier: 'Platinum' },
+  { id: 'cust-003', name: 'Priya Nair', email: 'priya.nair@techcorp.in', phone: '+91 98201 44312', totalBookings: 12, totalSpend: 7680, lastStay: '2026-05-19', nationality: 'IN', loyaltyTier: 'Gold' },
+  { id: 'cust-004', name: 'Derek Okonkwo', email: 'derek.okonkwo@law.ng', phone: '+234 803 512 6677', totalBookings: 3, totalSpend: 5160, lastStay: '2026-05-24', nationality: 'NG', loyaltyTier: 'Silver' },
+  { id: 'cust-005', name: 'Fatima Al-Rashid', email: 'f.alrashid@emirates.ae', phone: '+971 50 344 2210', totalBookings: 6, totalSpend: 8160, lastStay: '2026-05-25', nationality: 'AE', loyaltyTier: 'Gold' },
+  { id: 'cust-006', name: 'Ravi Krishnamurthy', email: 'ravi.k@infosys.com', phone: '+91 99001 23456', totalBookings: 9, totalSpend: 6120, lastStay: '2026-05-24', nationality: 'IN', loyaltyTier: 'Silver' },
+  { id: 'cust-007', name: 'Sofia Mendez', email: 'sofia.mendez@hotmail.com', phone: '+52 55 1234 5678', totalBookings: 4, totalSpend: 2560, lastStay: '2026-05-21', nationality: 'MX', loyaltyTier: 'Bronze' },
+  { id: 'cust-008', name: 'Yuki Tanaka', email: 'yuki.tanaka@mail.jp', phone: '+81 90-3344-5566', totalBookings: 7, totalSpend: 4760, lastStay: '2026-05-18', nationality: 'JP', loyaltyTier: 'Silver' },
+];
+
+export const BOOKING_TREND_DATA = [
+  { date: 'Apr 18', bookings: 12, revenue: 4320 },
+  { date: 'Apr 19', bookings: 8, revenue: 2880 },
+  { date: 'Apr 20', bookings: 15, revenue: 5400 },
+  { date: 'Apr 21', bookings: 18, revenue: 6480 },
+  { date: 'Apr 22', bookings: 22, revenue: 7920 },
+  { date: 'Apr 23', bookings: 19, revenue: 6840 },
+  { date: 'Apr 24', bookings: 11, revenue: 3960 },
+  { date: 'Apr 25', bookings: 14, revenue: 5040 },
+  { date: 'Apr 26', bookings: 16, revenue: 5760 },
+  { date: 'Apr 27', bookings: 21, revenue: 7560 },
+  { date: 'Apr 28', bookings: 25, revenue: 9000 },
+  { date: 'Apr 29', bookings: 20, revenue: 7200 },
+  { date: 'Apr 30', bookings: 17, revenue: 6120 },
+  { date: 'May 01', bookings: 13, revenue: 4680 },
+  { date: 'May 02', bookings: 9, revenue: 3240 },
+  { date: 'May 03', bookings: 11, revenue: 3960 },
+  { date: 'May 04', bookings: 16, revenue: 5760 },
+  { date: 'May 05', bookings: 23, revenue: 8280 },
+  { date: 'May 06', bookings: 28, revenue: 10080 },
+  { date: 'May 07', bookings: 24, revenue: 8640 },
+  { date: 'May 08', bookings: 18, revenue: 6480 },
+  { date: 'May 09', bookings: 14, revenue: 5040 },
+  { date: 'May 10', bookings: 10, revenue: 3600 },
+  { date: 'May 11', bookings: 13, revenue: 4680 },
+  { date: 'May 12', bookings: 19, revenue: 6840 },
+  { date: 'May 13', bookings: 26, revenue: 9360 },
+  { date: 'May 14', bookings: 31, revenue: 11160 },
+  { date: 'May 15', bookings: 27, revenue: 9720 },
+  { date: 'May 16', bookings: 22, revenue: 7920 },
+  { date: 'May 17', bookings: 18, revenue: 6480 },
+];
+
+export const WEEKLY_REVENUE_DATA = [
+  { week: 'Apr 14', standard: 2800, deluxe: 4200, suite: 6300, executive: 3900, penthouse: 4750 },
+  { week: 'Apr 21', standard: 3200, deluxe: 3800, suite: 7200, executive: 4400, penthouse: 9500 },
+  { week: 'Apr 28', standard: 2600, deluxe: 5100, suite: 5400, executive: 5200, penthouse: 4750 },
+  { week: 'May 05', standard: 3600, deluxe: 4600, suite: 8100, executive: 4800, penthouse: 9500 },
+  { week: 'May 12', standard: 4100, deluxe: 5400, suite: 9000, executive: 5600, penthouse: 14250 },
+];
+
+export const BOOKING_SOURCE_DATA = [
+  { name: 'Direct', value: 34, color: 'var(--primary)' },
+  { name: 'Booking.com', value: 28, color: 'var(--accent)' },
+  { name: 'Corporate', value: 18, color: '#16a34a' },
+  { name: 'Expedia', value: 12, color: '#7c3aed' },
+  { name: 'Walk-in', value: 5, color: '#0891b2' },
+  { name: 'Referral', value: 3, color: '#db2777' },
+];
+
+export const ROOM_TYPE_REVENUE = [
+  { room: 'Standard', revenue: 16300, bookings: 45, occupancy: 72 },
+  { room: 'Deluxe', revenue: 23100, bookings: 38, occupancy: 81 },
+  { room: 'Suite', revenue: 36000, bookings: 22, occupancy: 68 },
+  { room: 'Executive', revenue: 23900, bookings: 31, occupancy: 79 },
+  { room: 'Penthouse', revenue: 42750, bookings: 9, occupancy: 60 },
+];
+
+export const DAILY_OCCUPANCY = [
+  { day: 'May 01', occupancy: 71 },
+  { day: 'May 02', occupancy: 65 },
+  { day: 'May 03', occupancy: 68 },
+  { day: 'May 04', occupancy: 74 },
+  { day: 'May 05', occupancy: 82 },
+  { day: 'May 06', occupancy: 91 },
+  { day: 'May 07', occupancy: 88 },
+  { day: 'May 08', occupancy: 79 },
+  { day: 'May 09', occupancy: 73 },
+  { day: 'May 10', occupancy: 67 },
+  { day: 'May 11', occupancy: 70 },
+  { day: 'May 12', occupancy: 78 },
+  { day: 'May 13', occupancy: 85 },
+  { day: 'May 14', occupancy: 93 },
+  { day: 'May 15', occupancy: 89 },
+  { day: 'May 16', occupancy: 84 },
+  { day: 'May 17', occupancy: 76 },
+];
+
+export const ACTIVITY_FEED = [
+  { id: 'act-001', type: 'check-in', message: 'Priya Nair checked into Room 412 (Executive)', time: '2 min ago', icon: 'LogIn' },
+  { id: 'act-002', type: 'new-booking', message: 'New booking BKG-2026-0462 created — Oliver Strauss, 3 nights', time: '18 min ago', icon: 'PlusCircle' },
+  { id: 'act-003', type: 'payment', message: 'Payment received $1,290 for BKG-2026-0451 — Marcus Holloway', time: '41 min ago', icon: 'CreditCard' },
+  { id: 'act-004', type: 'cancellation', message: 'BKG-2026-0459 cancelled by Charlotte Beaumont — refund initiated', time: '1h 12m ago', icon: 'XCircle' },
+  { id: 'act-005', type: 'check-out', message: 'Tomás Reyes checked out of Room 308 (Deluxe)', time: '2h 05m ago', icon: 'LogOut' },
+  { id: 'act-006', type: 'pending', message: 'Booking BKG-2026-0455 pending confirmation — expires in 4h', time: '3h 30m ago', icon: 'Clock' },
+];
